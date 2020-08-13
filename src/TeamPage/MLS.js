@@ -5,6 +5,7 @@ export default class MLS extends Component {
     const {
       data
     } = this.props
+    
     return (
       <li key={`${data.name}-${data.conference}`} className="mls">
         <h2>{data.name}</h2>

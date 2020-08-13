@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import { fetchMls } from './mls-api.js';
 import Team from './Team.js'
 
 export default class TeamList extends Component {
@@ -8,7 +9,7 @@ export default class TeamList extends Component {
   }
 
   componentDidMount = async () => {
-    const data = await request.get(`https://intense-cliffs-84211.herokuapp.com/mls`)
+    const data = await fetchMls();
 
     const parsed = data.body;
 
