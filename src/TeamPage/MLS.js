@@ -6,7 +6,7 @@ export default class MLS extends Component {
       data
     } = this.props
     return (
-      <li key={Math.random()} className="mls">
+      <li key={`${data.name}-${data.conference}`} className="mls">
         <h2>{data.name}</h2>
         <p>{data.conference} Conference</p>
         <p>League Standing: {data.league_standing}</p>
