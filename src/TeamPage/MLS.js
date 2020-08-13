@@ -10,7 +10,7 @@ export default class MLS extends Component {
         <h2>{data.name}</h2>
         <p>{data.conference} Conference</p>
         <p>League Standing: {data.league_standing}</p>
-        <p>Ever Won a Championship: {data.ever_won_a_championship ? 'True' : 'False'}</p>
+        <p>Ever Won a Championship: {data.ever_won_a_championship ? 'Yes' : 'No'}</p>
       </li>
     )
   }
