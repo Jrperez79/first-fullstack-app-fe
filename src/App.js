@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { 
   BrowserRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
-import TeamList from './TeamPage.js';
+import TeamList from './TeamPage/TeamList.js';
+import Header from './Header.js';
 import './App.css';
 
 

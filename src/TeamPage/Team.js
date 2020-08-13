@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MLS from './mls.js'
+import MLS from './MLS.js'
 
 export default class Team extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class Team extends Component {
     } = this.props
     return (
       <ul>
-        {data.map(team => <MLS data={mls} />)}
+        {data.map(mls => <MLS data={mls} />)}
       </ul>
     )
   }

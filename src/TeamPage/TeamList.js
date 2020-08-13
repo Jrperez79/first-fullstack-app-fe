@@ -4,7 +4,7 @@ import Team from './Team.js'
 
 export default class TeamList extends Component {
   state = {
-    mls_teams: []
+    mlsTeams: []
   }
 
   componentDidMount = async () => {
@@ -13,7 +13,7 @@ export default class TeamList extends Component {
     const parsed = data.body;
 
     this.setState({
-      mls_teams: parsed
+      mlsTeams: parsed
     })
 
   }
@@ -21,7 +21,7 @@ export default class TeamList extends Component {
   render() {
     return (
       <div>
-        <Team data={this.state.mls_teams} />
+        <Team data={this.state.mlsTeams} />
       </div>
     )
   }
