@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import request from 'superagent'
 import { fetchMls } from './mls-api.js';
-import Team from './Team.js'
+import { Link } from 'react-router-dom';
 
 export default class TeamList extends Component {
   state = {
@@ -11,10 +10,8 @@ export default class TeamList extends Component {
   componentDidMount = async () => {
     const data = await fetchMls();
 
-    const parsed = data.body;
-
     this.setState({
-      mlsTeams: parsed
+      mlsTeams: data.body
     })
 
   }
@@ -22,7 +19,16 @@ export default class TeamList extends Component {
   render() {
     return (
       <div>
-        <Team data={this.state.mlsTeams} />
+        {
+          this.state.mlsTeams.map((teams) => {
+            return <Link className="teams" to={`/detail/${teams.id}`} key={`${teams.id}-${teams.conference}`}>
+              <h2>{data.name}</h2>
+              <p>{data.conference} Conference</p>
+              <p>League Standing: {data.league_standing}</p>
+              <p>Ever Won a Championship: {data.ever_won_a_championship ? 'Yes' : 'No'}</p>
+            </Link>
+          })
+        }
       </div>
     )
   }
