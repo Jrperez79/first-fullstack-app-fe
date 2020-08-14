@@ -22,13 +22,13 @@ export default class TeamList extends Component {
         {
           this.state.mlsTeams.map((teams) => {
             return <Link className="teams" to={`/detail/${teams.id}`} key={`${teams.id}-${teams.conference}`}>
-              <h2>{data.name}</h2>
-              <p>{data.conference} Conference</p>
-              <p>League Standing: {data.league_standing}</p>
-              <p>Ever Won a Championship: {data.ever_won_a_championship ? 'Yes' : 'No'}</p>
-            </Link>
-          })
-        }
+              <h2>{teams.name}</h2>
+              <p>{teams.conference} Conference</p>
+              <p>League Standing: {teams.league_standing}</p>
+              <p>Ever Won a Championship: {teams.ever_won_a_championship ? 'Yes' : 'No'}</p>
+              </Link>
+        })
+      }
       </div>
     )
   }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { createNewMlsTeam } from './mls-api.js';
-import './App.css';
+import '../App.css';
 
 export default class CreateTeam extends Component {
     state = {
         name: 'mls team',
-        conference: 'eastern or western',
+        conference: '',
         league_standing: 1,
-        ever_won_a_championship: 'yes or no'
+        ever_won_a_championship: ''
     }
 
     handleSubmit = async (e) => {
@@ -24,7 +24,7 @@ export default class CreateTeam extends Component {
             name: '',
             conference: '',
             league_standing: 1,
-            ever_won_a_championship: 'yes or no'
+            ever_won_a_championship: ''
         })
     }
     
@@ -47,7 +47,7 @@ export default class CreateTeam extends Component {
     render() {
         return (
             <div>
-                <h2>Enter Your Favorite Team</h2>
+                <h2>Add Your Favorite Team</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
@@ -63,8 +63,10 @@ export default class CreateTeam extends Component {
                     </label>
                     <label>
                         Ever Won A Championship: 
-                        <option onChange={this.handleEverWonAShip} value={this.state.ever_won_a_championship}>Yes</option>
-                        <option onChange={this.handleEverWonAShip} value={this.state.ever_won_a_championship}>No</option>
+                        <select onChange={this.handleEverWonAShip}>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
                     </label>
                     <button>Create Your Team</button>
                 </form>
