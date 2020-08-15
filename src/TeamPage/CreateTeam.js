@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import { createNewMlsTeam } from './mls-api.js';
+import { createNewMlsTeam, fetchConferences } from './mls-api.js';
 import '../App.css';
 
 export default class CreateTeam extends Component {
     state = {
         name: 'mls team',
-        conference: '',
+        conferences_id: [],
         league_standing: 1,
         ever_won_a_championship: ''
+    }
+
+    componentDidMount = async () => {
+        const conferenceData = await fetchConferences();
+
+        this.setState({
+            conferences_id: conferenceData.body
+        })
     }
 
     handleSubmit = async (e) => {
@@ -15,14 +23,14 @@ export default class CreateTeam extends Component {
 
         await createNewMlsTeam({
             name: this.state.name,
-            conference: this.state.conference,
+            conference_id: this.state.conferences_id,
             league_standing: this.state.league_standing,
             ever_won_a_championship: this.state.ever_won_a_championship
         });
 
         this.setState({
             name: '',
-            conference: '',
+            conferences_id: [],
             league_standing: 1,
             ever_won_a_championship: ''
         })
@@ -33,7 +41,7 @@ export default class CreateTeam extends Component {
     }
 
     handleConferenceChange = e => {
-        this.setState({ conference: e.target.value });
+        this.setState({ conferences_id: e.target.value });
     }
 
     handleLeagueStandingChange = e => {
@@ -55,7 +63,11 @@ export default class CreateTeam extends Component {
                     </label>
                     <label>
                         Conference: 
-                        <input onChange={this.handleNameChange} type="text" value={this.state.conference} />
+                        <select onChange={this.handleConferenceChange} value={this.state.conferences_id}>
+                            {
+                                this.state.conferences_id.map((conference) => <option value={conference.id}>{conference.conferences_id}</option>)
+                            }
+                        </select>
                     </label>
                     <label>
                         League Standing:
