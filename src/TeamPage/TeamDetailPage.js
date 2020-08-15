@@ -16,12 +16,12 @@ export default class TeamDetailPage extends Component {
 
   render() {
     return (
-      <li className="mls">
+      <div className="mls">
         <h2>{this.state.mlsTeams.name}</h2>
         <p>{this.state.mlsTeams.conference} Conference</p>
         <p>League Standing: {this.state.mlsTeams.league_standing}</p>
         <p>Ever Won a Championship: {this.state.mlsTeams.ever_won_a_championship ? 'Yes' : 'No'}</p>
-      </li>
+      </div>
     )
   }
 }
