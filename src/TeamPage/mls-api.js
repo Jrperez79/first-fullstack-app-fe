@@ -24,6 +24,6 @@ export function deleteMlsTeam(id) {
     return request.delete(`https://intense-cliffs-84211.herokuapp.com/mls/${id}`);
 }
 
-export function updateMlsTeam(id, updateMlsTeam) {
-    return request.put(`https://intense-cliffs-84211.herokuapp.com/mls/${id}`, updateMlsTeam);
+export function updateMlsTeam(id, updatedMlsTeam) {
+    return request.put(`https://intense-cliffs-84211.herokuapp.com/mls/${id}`, updatedMlsTeam);
 }

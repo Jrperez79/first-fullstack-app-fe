@@ -4,17 +4,18 @@ import '../App.css';
 
 export default class CreateTeam extends Component {
     state = {
-        name: 'mls team',
-        conferences_id: [],
+        name: 'Enter Team',
+        conferences_id: 1,
+        conferences: [],
         league_standing: 1,
-        ever_won_a_championship: ''
+        ever_won_a_championship: true
     }
 
     componentDidMount = async () => {
         const conferenceData = await fetchConferences();
 
         this.setState({
-            conferences_id: conferenceData.body
+            conferences: conferenceData.body
         })
     }
 
@@ -23,14 +24,14 @@ export default class CreateTeam extends Component {
 
         await createNewMlsTeam({
             name: this.state.name,
-            conference_id: this.state.conferences_id,
+            conferences_id: this.state.conferences_id,
             league_standing: this.state.league_standing,
             ever_won_a_championship: this.state.ever_won_a_championship
         });
 
         this.setState({
             name: '',
-            conferences_id: [],
+            conferences_id: 1,
             league_standing: 1,
             ever_won_a_championship: ''
         })
@@ -63,9 +64,9 @@ export default class CreateTeam extends Component {
                     </label>
                     <label>
                         Conference: 
-                        <select onChange={this.handleConferenceChange} value={this.state.conferences_id}>
+                        <select onChange={this.handleConferenceChange} value={this.state.conferences}>
                             {
-                                this.state.conferences_id.map((conference) => <option value={conference.id}>{conference.conferences_id}</option>)
+                                this.state.conferences.map((conference) => <option value={conference.id}>{conference.name}</option>)
                             }
                         </select>
                     </label>

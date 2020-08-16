@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { fetchMlsTeam, fetchConferences, updateMlsTeam, deleteMlsTeam } from './mls-api.js';
-import { matchPath } from 'react-router-dom';
+// import { matchPath } from 'react-router-dom';
 
 export default class TeamDetailPage extends Component {
   state = {
@@ -41,12 +41,14 @@ export default class TeamDetailPage extends Component {
           ever_won_a_championship: this.state.ever_won_a_championship
         });
 
+        const updatedMlsTeam = await fetchMlsTeam(this.props.match.params.id)
+
         this.setState({
-          name: 'Portland Timbers',
+          name: '',
           conferences_id: 1,
           league_standing: 1,
           ever_won_a_championship: 'yes',
-          mlsTeams: updateMlsTeam.body
+          mlsTeams: updatedMlsTeam.body
         });
     } catch(e) {
       console.log(e.message)
