@@ -15,14 +15,14 @@ export default class TeamDetailPage extends Component {
   componentDidMount = async () => {
     const data = await fetchMlsTeam(this.props.match.params.id)
     const conferenceData = await fetchConferences();
-
-    const matchingConferences = conferenceData.body.find(conference => conference.name = data.body.conference_name);
+    
+    // const matchingConferences = conferenceData.body.find(conference => conference.// name = data.body.conference_name);
 
     this.setState({
       mlsTeams: data.body,
       name: data.body.name,
-      conference: matchingConferences.id,
-      conferences: matchingConferences.body,
+      conferences: conferenceData.body,
+      //conference: matchingConferences.conferences_id,
       league_standing: data.body.league_standing,
       ever_won_a_championship: data.body.ever_won_a_championship
     })
@@ -47,7 +47,7 @@ export default class TeamDetailPage extends Component {
           name: '',
           conferences_id: 1,
           league_standing: 1,
-          ever_won_a_championship: 'yes',
+          ever_won_a_championship: '',
           mlsTeams: updatedMlsTeam.body
         });
     } catch(e) {
@@ -81,7 +81,7 @@ export default class TeamDetailPage extends Component {
     return (
       <div>
         <div>
-          Here are the details about the team you selected. Team: {this.state.mlsTeams.name} play in the {this.state.mlsTeams.conference_name} conference, League Standing {this.state.mlsTeams.league_standing}, and has this team ever won a Ship: {this.state.mlsTeams.ever_won_a_championship}.
+          Here are the details about the team you selected. Team: {this.state.mlsTeams.name} play in the {this.state.mlsTeams.conferences_id} conference, League Standing {this.state.mlsTeams.league_standing}, and has this team ever won a Ship: {this.state.mlsTeams.ever_won_a_championship}.
         </div>
 
       <h2>Update this Teams information?</h2>
@@ -94,7 +94,7 @@ export default class TeamDetailPage extends Component {
               Conference: 
               <select onChange={this.handleConferenceChange} value={this.state.conferences_id}>
                 {
-                  this.state.conferences.map((conference) => <option value={conference.id}>{conference.name}</option>)
+                  this.state.conferences.map((conference) => <option value={conference.id} key={conference.name}>{conference.name}</option>)
                 }
               </select>
           </label>
@@ -104,7 +104,7 @@ export default class TeamDetailPage extends Component {
           </label>
           <label>
               Ever Won A Championship: 
-              <input onChange={this.handleEverWonAShipChange} type="text" value={this.state.ever_won_a_championship} />
+              <input onChange={this.handleEverWonAShipChange} type="text" value={this.state.ever_won_a_championship ? 'Yes' : 'No'} />
           </label>
           <button>Update Team</button>
         </form>
