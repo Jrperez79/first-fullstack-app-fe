@@ -36,3 +36,102 @@
     transform: rotate(360deg);
   }
 }
+
+main {
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  width: 100%;
+  min-height: 100vh;
+  background-color: whitesmoke;
+}
+
+.header {
+  -webkit-box-shadow: inset 0px 5px 25px 5px rgba(0,0,0,0.5); 
+  box-shadow: inset 0px 5px 25px 5px rgba(0,0,0,0.5);
+  background-color: red;
+  display: block;
+}
+
+.header-title {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 35px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: capitalize;
+}
+
+.create-team {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 20px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: capitalize;
+  padding-bottom: 1px;
+}
+
+.team-list {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 20px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: capitalize;
+}
+
+.team-cards {
+  margin: 15px;
+  border: solid 2px #252323ff;
+  background-color: skyblue;
+  border-radius: 20px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-content {
+  height: 100%;
+  background-color: skyblue;
+}
+
+.create-list {
+  display: block;
+}
+
+.selected-team-info {
+  height: 100%;
+  margin: auto;
+  background-color: yellowgreen;
+  padding-top: 10px;
+}
+.form-update {
+  height: 100%;
+  background-color: skyblue;
+}
+
+.delete-button {
+  background-color: rgb(167, 71, 71); 
+}
+
+.update-button {
+  background-color: greenyellow;
+}
+
+.create-button {
+  background-color: gainsboro;
+}
