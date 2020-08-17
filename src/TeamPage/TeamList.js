@@ -22,7 +22,7 @@ export default class TeamList extends Component {
       <div>
         {
           this.state.mlsTeams.map((teams) => {
-            return <Link className="teams" to={`/detail/${teams.id}`} key={`${teams.id}-${teams.conferences_id}`}>
+            return <Link className="teams" to={`/detail/${teams.id}`} key={`${teams.id}`}>
               <h2>{teams.name}</h2>
               <p>{teams.conferences_id} Conference</p>
               <p>League Standing: {teams.league_standing}</p>
