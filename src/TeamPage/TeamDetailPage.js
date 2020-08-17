@@ -81,10 +81,10 @@ export default class TeamDetailPage extends Component {
     return (
       <div>
         <div>
-          Here are the details about the team you selected. Team: {this.state.mlsTeams.name} play in the {this.state.mlsTeams.conferences_id} conference, League Standing {this.state.mlsTeams.league_standing}, and has this team ever won a Ship: {this.state.mlsTeams.ever_won_a_championship}.
+          Here are the details about the team you selected. Team: {this.state.mlsTeams.name} play in the {this.state.mlsTeams.conferences_id} conference, League Standing: {this.state.mlsTeams.league_standing}, and has this team ever won a Championship: {this.state.mlsTeams.ever_won_a_championship ? 'Yes' : 'No'}.
         </div>
 
-      <h2>Update this Teams information?</h2>
+      <h2>Update The Team Information?</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
               Team Name: 
@@ -104,7 +104,10 @@ export default class TeamDetailPage extends Component {
           </label>
           <label>
               Ever Won A Championship: 
-              <input onChange={this.handleEverWonAShipChange} type="text" value={this.state.ever_won_a_championship ? 'Yes' : 'No'} />
+              <select onChange={this.handleEverWonAShipChange}>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
           </label>
           <button>Update Team</button>
         </form>

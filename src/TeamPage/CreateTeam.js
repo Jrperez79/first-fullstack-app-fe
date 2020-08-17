@@ -64,9 +64,9 @@ export default class CreateTeam extends Component {
                     </label>
                     <label>
                         Conference: 
-                        <select onChange={this.handleConferenceChange} value={this.state.conferences}>
+                        <select onChange={this.handleConferenceChange}>
                             {
-                                this.state.conferences.map((conference) => <option value={conference.id} key={conference}>{conference.name}</option>)
+                                this.state.conferences.map((conference) => <option value={conference.id}>{conference.name}</option>)
                             }
                         </select>
                     </label>

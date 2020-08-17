@@ -7,8 +7,12 @@ export default class Header extends Component {
             <header>
                 <h1>Major League Soccer Info</h1>
                 <div className="sidebar">
-                    <Link to='/create'>Create Team</Link>
-                    <Link to='/'>Team List</Link>
+                    <div>
+                        <Link to='/create'>Create Team</Link>
+                    </div>
+                    <div>
+                        <Link to='/'>Team List</Link>
+                    </div>
                 </div>
             </header>
         )
