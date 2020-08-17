@@ -16,7 +16,8 @@ export default class TeamDetailPage extends Component {
     const data = await fetchMlsTeam(this.props.match.params.id)
     const conferenceData = await fetchConferences();
     
-    // const matchingConferences = conferenceData.body.find(conference => conference.// name = data.body.conference_name);
+    // const matchingConferences = conferenceData.body.find(conference => conference.
+    // name = data.body.conference_name);
 
     this.setState({
       mlsTeams: data.body,
@@ -80,16 +81,16 @@ export default class TeamDetailPage extends Component {
   render() {
     return (
       <div>
-        <div>
-          Here are the details about the team you selected. Team: {this.state.mlsTeams.name} play in the {this.state.mlsTeams.conferences_id} conference, League Standing: {this.state.mlsTeams.league_standing}, and has this team ever won a Championship: {this.state.mlsTeams.ever_won_a_championship ? 'Yes' : 'No'}.
+        <div className="selected-team-info">
+          Here are the details about the team you selected...<br/> Team: {this.state.mlsTeams.name}<br/>Play in the {this.state.mlsTeams.conferences_id} conference<br/>League Standing: {this.state.mlsTeams.league_standing}<br/> Has this team ever won a Championship: {this.state.mlsTeams.ever_won_a_championship ? 'Yes' : 'No'}.
         </div>
-
+      <div className="form-update">
       <h2>Update The Team Information?</h2>
         <form onSubmit={this.handleSubmit}>
           <label>
               Team Name: 
               <input onChange={this.handleNameChange} type="text" value={this.state.name} />
-          </label>
+          </label><br/>
           <label>
               Conference: 
               <select onChange={this.handleConferenceChange} value={this.state.conferences_id}>
@@ -97,21 +98,22 @@ export default class TeamDetailPage extends Component {
                   this.state.conferences.map((conference) => <option value={conference.id} key={conference.name}>{conference.name}</option>)
                 }
               </select>
-          </label>
+          </label><br/>
           <label>
               League Standing: 
               <input onChange={this.handleLeagueStandingChange} type="number" value={this.state.league_standing} />
-          </label>
+          </label><br/>
           <label>
               Ever Won A Championship: 
               <select onChange={this.handleEverWonAShipChange}>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
               </select>
-          </label>
-          <button>Update Team</button>
+          </label><br/>
+          <button className="update-button">Update Team</button>
         </form>
-      <button onClick={this.handleDelete}>Delete Team</button>
+      <button className="delete-button" onClick={this.handleDelete}>Delete Team</button>
+      </div>
     </div>
     )
   }

@@ -55,13 +55,13 @@ export default class CreateTeam extends Component {
 
     render() {
         return (
-            <div>
+            <div className="create-content">
                 <h2>Add Your Favorite Team</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="create-list">
                     <label>
                         Name:
                         <input onChange={this.handleNameChange} type="text" value={this.state.name} />
-                    </label>
+                    </label><br/>
                     <label>
                         Conference: 
                         <select onChange={this.handleConferenceChange}>
@@ -69,11 +69,11 @@ export default class CreateTeam extends Component {
                                 this.state.conferences.map((conference) => <option value={conference.id}>{conference.name}</option>)
                             }
                         </select>
-                    </label>
+                    </label><br/>
                     <label>
                         League Standing:
                         <input onChange={this.handleLeagueStandingChange} type="number" value={this.state.league_standing} />
-                    </label>
+                    </label><br/>
                     <label>
                         Ever Won A Championship: 
                         <select onChange={this.handleEverWonAShip}>
@@ -81,7 +81,8 @@ export default class CreateTeam extends Component {
                             <option value="false">No</option>
                         </select>
                     </label>
-                    <button>Create Your Team</button>
+                    <br/>
+                    <button className="create-button">Create Your Team</button>
                 </form>
             </div>
         )
